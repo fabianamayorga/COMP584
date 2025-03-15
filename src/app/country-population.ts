@@ -4,5 +4,6 @@ export interface CountryPopulation {
     iso2: number;
     iso3: number;
     population: number;
+    cityCount: number; 
 }
 
