@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { LoginRequest } from './login-request';
+import { AuthService } from './auth.service';
 
 
 @Component({
@@ -17,11 +18,11 @@ import { LoginRequest } from './login-request';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
+
 export class LoginComponent implements OnInit{
 
     form!: FormGroup;
-
-    constructor(){
+    constructor(private authService:AuthService, private router: Router){
       
     }
   ngOnInit(): void {
@@ -35,5 +36,15 @@ export class LoginComponent implements OnInit{
       userName: this.form.controls["userName"].value,
       password: this.form.controls["password"].value
     };
-  }
+    
+    this.authService.login(LoginRequest).subscribe({
+      next: (result) => {
+        console.log(result);
+        if(result.success){
+          this.router.navigate(['/']);
+        }
+      },
+      error: error => console.error(error)
+    })
+  } 
 }
