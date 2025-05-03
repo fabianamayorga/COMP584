@@ -31,9 +31,13 @@ export class AuthService {
     }));
   }
 
-
-
   logout(){
-
+    localStorage.removeItem("my_new_token");
+    this.setAuthStatus(false);
   }
+
+  isAuthenticated() : boolean{
+    return localStorage.getItem("my_new_token") != null;
+  }
+
 }

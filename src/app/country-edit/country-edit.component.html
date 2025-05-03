@@ -1,0 +1,26 @@
+<div class="countryEdit">
+    <h1>Edit Country</h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+        <mat-form-field>
+            <mat-label>Country:</mat-label>
+            <input matInput formControlName="Name" required="required" placeholder="Enter new country name">
+        </mat-form-field>
+  
+        <mat-form-field>
+            <mat-label>ISO2:</mat-label>
+            <input formControlName="ISO2" required="required" placeholder="Enter new ISO2">
+        </mat-form-field>
+  
+        <mat-form-field>
+            <mat-label>ISO3:</mat-label>
+            <input matInput formControlName="ISO3" required="required" placeholder="Enter new ISO3">
+        </mat-form-field>
+
+        <div>
+            <button mat-flat-button color="primary" type="submit">Submit Changes</button>
+            
+            <button mat-flat-button color="secondary" [routerLink]="['/']">Cancel</button>
+        </div>
+    </form>
+  </div>

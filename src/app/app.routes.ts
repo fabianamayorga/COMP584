@@ -5,6 +5,7 @@ import { CountriesComponent } from './countries/countries.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { CountryPopulationComponent } from './country-population/country-population.component';
 import { LoginComponent } from './auth/login.component';
+import { CountryEditComponent } from './country-edit/country-edit.component';
 
 export const routes: Routes = [
     {
@@ -31,6 +32,10 @@ export const routes: Routes = [
     {
         path: "login",
         component: LoginComponent
+    },
+    {
+        path: "countryEdit/:id",
+        component: CountryEditComponent
     },
     {
         path: "",
